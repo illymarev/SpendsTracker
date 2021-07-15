@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block bodyblock %}
+{% if request.user.id == wallet.user.id %}
+    <div class="centered">
+
+    <div class="main-heading-centered">
+    <img style="margin-top: 0px;" src="{% static 'images/business_finance_wallet_1-copy-5.jpg' %}"
+                             alt="wallet" width="50px" height="50px"><h2 style="margin-top:14px;">{{ wallet.name }}</h2>
+    </div>
+    <section class="cards">
+{% for expense in wallet.this_month_expenses_detailed %}
+<article class="card">
+    <p>Expense: {{ expense.amount }}&#8372;
+    <p>Category: {{ expense.category }}</p>
+    <p>Date: {{ expense.date }}</p>
+
+    <p>Comments:{% if expense.comment %} {{ expense.comment }}  {% else %} No Comments {% endif %}</p>
+
+</article>
+{% endfor %}</section>
+    <div class="button-space">
+    <a href="{% url 'display_wallets' %}"><button class="login-button" type="button">Return to the main page</button></a>
+        </div>
+</div>
+     {% else %}
+        You are not the owner of this wallet.
+    {% endif %}
+{% endblock %}

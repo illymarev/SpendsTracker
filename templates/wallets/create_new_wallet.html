@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block bodyblock %}
+    <div class="centered-hardly">
+<form method="POST" action="{% url 'create_new_wallet' %}">
+    {% csrf_token %}
+    <div class="fieldWrapper">
+    <label for="name">Enter the name of the wallet:
+        <input class="input-wallet-name" type="text" name="name"></label>
+    </div>
+    <button style="margin-left: 0px;" class="login-button" type="submit" value="Create Wallet">Create Wallet</button>
+</form></div>
+{% endblock %}

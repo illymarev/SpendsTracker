@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block bodyblock %}
+{% if request.user == wallet.user %}
+    <div class="centered-lightly">
+    <h1>Are you sure you want to delete the wallet "{{ wallet.name }}"?</h1>
+    <form method="POST">
+    {% csrf_token %}
+    <button class="btn btn-button-space danger" type="submit">Delete</button>
+    </form></div>
+{% else %}
+    <h1>You are not the owner of this wallet</h1>
+{% endif %}
+{% endblock %}

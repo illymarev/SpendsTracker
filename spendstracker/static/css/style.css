@@ -1,0 +1,193 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
+/*navbar styling*/
+nav{
+    display: flex;
+    padding: 20px 0;
+    border-bottom: #1b1b1b 1px solid;
+    justify-content: space-between;
+}
+
+nav .right-side{
+    display: flex;
+    margin: 0 30px;
+}
+
+nav .right-side h1{
+    margin-left: 60px;
+}
+
+nav .left-side{
+    margin: 0 30px;
+}
+
+/*utilities*/
+.btn{
+    border: 1px black solid;
+    padding: 3px 8px;
+    border-radius: 10px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.centered{
+    margin: 0 30px;
+}
+
+.centered-lightly{
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    text-align: center;
+}
+
+.centered-hardly{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    text-align: center;
+}
+
+.btn-button-space{
+    padding: 10px 15px;
+    font-size: 0.9rem;
+    border-radius: 10px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.btn-button-space:hover{
+    background: #f0f0f0;
+    border:1px dotted #dedede;
+    transition-duration: 300ms;
+}
+
+.login-button{
+    padding: 10px 55px;
+    font-size: 0.9rem;
+    border-radius: 10px;
+    background-color: white;
+    margin-top: 15px;
+    margin-left: 55px;
+    cursor: pointer;
+}
+
+input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+select{
+    width: 50%;
+}
+
+.break {
+    width: 1000%;
+  height: 0;
+}
+
+input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+.main-heading-centered{
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.danger:hover{
+    background: red;
+    border: 1px solid #750b0b;
+    transition-duration: 1000ms;
+}
+
+/*display_wallets.html styling*/
+.cards {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+ }
+
+.card {
+    flex: 1 0 400px;
+    box-sizing: border-box;
+    margin: 1rem .25em;
+}
+
+@media screen and (min-width: 40rem) {
+    .card {
+       max-width: calc(80%);
+    }
+}
+
+.delete-wallet{
+    margin-top: 10px;
+}
+
+.cards h2{
+    display: flex;
+    align-content: center;
+    margin-bottom: 10px;
+}
+
+.cards h2 img{
+    margin-top: -13px;
+}
+
+.card p{
+    line-height: 2rem;
+}
+
+.button-space{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.button-space button{
+    margin: 0 10px;
+}
+
+
+/*Add income*/
+textarea{
+    width: 200px;
+    height: 70px;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 30px;
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+    max-width: 45%;
+    width: 45%;
+    align-items: center;
+    text-align: start;
+}

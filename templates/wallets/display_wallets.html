@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block bodyblock %}
+    <div class="centered">
+    <section class="cards">
+    {% if request.user.is_authenticated %}
+        {% if wallets %}
+            {% for wallet in wallets %}
+                <article class="card">
+
+                    <a href="{% url 'wallet_details' pk=wallet.id %}"><h2><img src="{% static 'images/business_finance_wallet_1-copy-5.jpg' %}"
+                             alt="wallet" width="50px" height="50px">{{ wallet.name }}
+                        </h2></a>
+                    <p>Current balance: {{ wallet.cash }}&#8372;
+                        <a href="{% url 'delete_wallet' pk=wallet.id %}"><i style="font-size: 13px;" class="far fa-trash-alt delete-wallet"></i></a></p>
+                <p>Expenses this month:
+                {% if wallet.this_month_expenses %}
+                    {{ wallet.this_month_expenses }}&#8372; 
+                    <a href="{% url 'month_detailed_expenses' pk=wallet.id %}"><button type="button" class="btn">
+                        View details
+                    </button></a>
+                {% else %}
+                No expenses
+                {% endif %}</p>
+                <p>Income this month:
+                {% if wallet.this_month_income %}
+                    {{ wallet.this_month_income }}&#8372;
+                    <a href="{% url 'month_detailed_income' pk=wallet.id %}"><button type="button" class="btn">
+                        View details
+                    </button></a>
+                {% else %}
+                No income
+                {% endif %}</p>
+                </article>
+            {% endfor %}</section>
+            <br>
+            <div class="button-space">
+            <a href="{% url 'add_income' %}"><button type="button" class="btn btn-button-space">Add Income</button></a>
+            <a href="{% url 'add_expense' %}"><button type="button" class="btn btn-button-space">Add Expense</button></a>
+            <a href="{% url 'create_new_wallet' %}"><button type="button" class="btn btn-button-space">Create Wallet</button></a>
+        {% else %}
+            <h1>You have no wallets yet.</h1>
+            <br>
+            <button type="button" class="btn btn-button-space"><a href="{% url 'create_new_wallet' %}">Create Wallet</a></button>
+        {% endif %}</div>
+    {% else %}
+        <h1>You need to login to view this information</h1>
+    {% endif %}</div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block bodyblock %}
+    {% if request.user.id == wallet.user.id %}
+    <div class="main-heading-centered">
+        <img style="margin-top: 0;" src="{% static 'images/business_finance_wallet_1-copy-5.jpg' %}"
+             alt="wallet" width="50px" height="50px">
+        <h2 style="margin-top:14px;">{{ wallet.name }}</h2>
+    </div>
+    <div class="button-space">
+        <h4>Balance: {{ wallet.cash }} &#8372; </h4></div>
+        <div class="button-space">
+        <form method="POST">
+        {% csrf_token %}
+        <p>Filter by month:
+            <select style="width: 90px;" name="month">
+                <option value="13">All time</option>
+                <option value="1">January</option>
+                <option value="2">February</option>
+                <option value="3">March</option>
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+                <option value="8">August</option>
+                <option value="9">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+    </select>
+        <button class="btn" type="submit">Filter</button></p></form></div>
+    <div class="row">
+        <div class="column">
+            {% for income in wallet_income %}
+                <div class="card" style="flex: 1 0 100px;">
+                    <p><i class="far fa-arrow-alt-circle-up" style="color:green;"></i> Income: {{ income.amount }}</p>
+                    <p>Category: {{ income.category }}</p>
+                    <p>Date: {{ income.date }}</p>
+                    <p>Comments: {% if income.comment %} {{ income.comment }} {% else %} No Comments {% endif %}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="column">
+            {% for expense in wallet_expense %}
+                <div class="card" style="flex: 1 0 100px;">
+                    <p><i class="far fa-arrow-alt-circle-down" style="color: #a11b3a;"></i> Expense: {{ expense.amount }}</p>
+                    <p>Category: {{ expense.category }}</p>
+                    <p>Date: {{ expense.date }}</p>
+                    <p>Comments: {% if expense.comment %} {{ expense.comment }} {% else %} No Comments {% endif %}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+     {% else %}
+        You are not the owner of this wallet.
+    {% endif %}
+{% endblock %}
